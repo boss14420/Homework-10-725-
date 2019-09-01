@@ -64,8 +64,20 @@ Answer to the problem goes here.
         is a member of $A(S)$ because $\theta x + (1-\theta) y \in S$.
         Therefore $A(S)$ is convex.
 
-
     \item
+        For any $x, y \in A^{-1}(S)$, we have $Ax, Ay \in S$.
+
+        Then $\theta Ax + (1-\theta)Ay = A(\theta x + (1-\theta)y) \in S,
+        \forall \theta \in [0, 1]$ because $S$ is convex.
+
+        By definition of $A^{-1}(S)$, $\theta x + (1-\theta)y \in A^{-1}(S)$. Therefore $A^{-1}(S)$ is convex.
+
+    \item 
+
+    \item Square $S = \{ (x, y) : |x| \le 1, |y| \le 1 \}$ is a closed set. Image
+        of $S$ under transformation $A = (\begin{smallmatrix} 1 & 0 \\0 & 0
+        \end{smallmatrix})$ is a line segment $A(S) = \{ (x, 0):
+        |x| \le 1\}$, is not a closed set.
 
 \end{enumerate}
 
