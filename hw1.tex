@@ -10,6 +10,7 @@
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage{hyperref}
+\usepackage{enumitem}
 
 \hypersetup{%
   colorlinks=true,
@@ -49,13 +50,22 @@
 \rfoot{\small\thepage}
 \headsep 1.5em
 
+
+% if you want to create a new list from scratch
+\newlist{alphalist}{enumerate}{1}
+% in that case, at least label must be specified using \setlist
+\setlist[alphalist,1]{label=\textbf{\alph*.}}
+
 \begin{document}
 
 \section*{Problem 1}
 
 Answer to the problem goes here.
 
-\begin{enumerate}
+\begin{alphalist}
+
+\item Closed and convex sets.
+\begin{enumerate}[label=(\roman*)]
     \item
         For any $Ax, Ay \in A(S)$ ($x, y \in S$) and any $\theta \in [0, 1]$, we have
 
@@ -72,14 +82,41 @@ Answer to the problem goes here.
 
         By definition of $A^{-1}(S)$, $\theta x + (1-\theta)y \in A^{-1}(S)$. Therefore $A^{-1}(S)$ is convex.
 
-    \item 
+    \item
+        Let $x$ is a limit point of $A^{-1}(S)$, then $\forall{}\epsilon{}>0,
+        \exists{}y \in A^{-1}(S): ||x - y|| = ||z|| < \epsilon$. We will show
+        that $Ax$ is a limit point of $S$.
 
-    \item Square $S = \{ (x, y) : |x| \le 1, |y| \le 1 \}$ is a closed set. Image
-        of $S$ under transformation $A = (\begin{smallmatrix} 1 & 0 \\0 & 0
-        \end{smallmatrix})$ is a line segment $A(S) = \{ (x, 0):
-        |x| \le 1\}$, is not a closed set.
+        Consider the l2-norm
+        \[
+        \begin{split}
+            ||Ax - Ay|| &= ||Az||  = \left|\left|\begin{matrix} \sum_j A_{1j}z_j \\ \sum_j A_{2j}z_j \\ .. \\ \sum_j A_{mj}z_j\end{matrix}\right|\right|
+                        = \sqrt{\sum_i^m\sum_j^nA_{ij}^2 z_j^2} \\
+                        &\le \sqrt{\sum_i^m \sum_j^n A_{max}^2 z_j^2} =\sqrt{m} A_{max} ||z|| < \sqrt{m}A_{max}\epsilon \\
+                        &\text{with} \quad A_{max} = \max{|A_{ij}|}.
+        \end{split}
+    \]
 
-\end{enumerate}
+        So with point $Ax$, for all $\xi = \sqrt{m}A_{max}\epsilon>0$, we can find
+        point $Ay \in S$ (because $y \in A^{-1}(S)$) such that $|| Ax - Ay || < \xi$. By definition, $Ax$
+        is a limit point of $S$. Since $S$ is closed set, $Ax$ is also in $S$,
+        it follow that $x \in A^{-1}(S)$.
+
+        We have shown that any limit point $x$ of $A^{-1}(S)$ is also an
+        element of $A^{-1}(S)$, therefore it is a closed set.
+
+    \item Consider $S = \{(x, y) : x > 0, y \ge \frac{1}{x}\}$, S is a closed
+        set because the compliment set $R^2 \backslash S$ equal to its interior (for any
+        point, we can find a disc containing the point that doesn't intersect
+        $S$).
+
+        Image of S under transformation $A = (\begin{smallmatrix} 1 & 0
+        \end{smallmatrix})$ is $A(S) = \{ x : x > 0 \}$, obviously is not a
+        closed set.
+
+\end{enumerate} % end of 1a
+
+\end{alphalist}
 
 %\begin{enumerate}
 %  \item
