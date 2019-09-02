@@ -64,6 +64,7 @@ Answer to the problem goes here.
 
 \begin{alphalist}
 
+%==================================
 \item Closed and convex sets.
 \begin{enumerate}[label=(\roman*)]
     \item
@@ -116,48 +117,64 @@ Answer to the problem goes here.
 
 \end{enumerate} % end of 1a
 
+%==================================
+\item Polyhedra.
+
+\begin{enumerate}[label=(\roman*)]
+    \item
+
+    \item Suppose $P = \{x : Cx \le d\}$. Since $Q = \{ (x, y) : Cx \le d,
+        y = Ax \}$ is a polyhedron, then $A(P) = \{y : (x, y) \in Q\}$ is also a
+        polyhedron.
+\end{enumerate}
+
+%==================================
+\item Let $X, Y$ are elements of the set. For each $\theta \in [0, 1]$ we have
+    \begin{itemize}
+        \item $\theta X + (1 - \theta)Y$ is symetric,
+        \item $\theta X + (1 - \theta) \succeq 0$,
+        \item $I - \theta X + (1 - \theta) = \theta(I - X) + (1-\theta)(I - Y) \succeq 0$,
+        \item $tr(\theta X + (1- \theta)Y) = \theta tr(X) + (1 - \theta)tr(Y) = k$
+    \end{itemize}
+
+    so $\theta X + (1- \theta)Y$ is also an element. Therefore the set is convex.
+
+
+%==================================
+\item
+    Suppose both statements
+    \begin{itemize}
+        \item there exists $x \in \mathbb{R}^n$ such that $Ax = b, x \ge 0$; (i)
+        \item there exists $y \in \mathbb{R}^m$ such that $A^Ty \ge 0, y^Tb <
+            0$; (ii)
+    \end{itemize}
+
+    are true. Then $y^Tb = x^TA^Tb < 0$. But $x \ge 0, A^Ty \ge 0 \implies
+    x^TA^Ty \ge 0$. Contradiction.
+
+    Consider two sets $C = \{t : t = Ax, x \ge 0\}, D = \{ b \}$. Then either
+    statement (i) or "set C, D are disjoint" (iii) is true. We will show
+    that (iii) implies (ii), so that exactly one of (i) or (ii) is true.
+
+    We have $C, D$ are both convex, closed and disjoint and $D$ is bounded. By
+    strict variant of the Separating Hyperplane Theorem, $C$ and $D$ can be
+    separated; i.e.,
+    \[
+        \exists y \in \mathbb{R}^m, y \ne 0, z \in \mathbb{R} \quad \text{such
+        that}\quad y^Tt \ge z, \forall t \in C \quad \text{and} \quad y^Tb < z
+    \]
+
+    Since $0 \in C$, we must have $z \le 0$. And if $\exists t \in C \quad
+    \text{s.t.} \quad y^Tt < 0$ then $y^T\alpha{}t$ can be arbitrarily large negative
+    as $\alpha \to \infty$. So
+    \[
+        y^Tt \ge 0, \forall t \in C  \qquad \text{and} \qquad y^Tb < 0
+    \]
+    Let $a_1, a_2,..., a_n$ be the columns of $A$, then $a_i \in C$. This
+    implies $A^Ty \ge 0$ (statement ii).
 \end{alphalist}
 
-%\begin{enumerate}
-%  \item
-%   Problem 1 part 1 answer here.
-%  \item
-%    Problem 1 part 2 answer here.
-%
-%    Here is an example typesetting mathematics in \LaTeX
-%\begin{equation*}
-%    X(m,n) = \left\{\begin{array}{lr}
-%        x(n), & \text{for } 0\leq n\leq 1\\
-%        \frac{x(n-1)}{2}, & \text{for } 0\leq n\leq 1\\
-%        \log_2 \left\lceil n \right\rceil \qquad & \text{for } 0\leq n\leq 1
-%        \end{array}\right\} = xy
-%\end{equation*}
-%
-%    \item Problem 1 part 3 answer here.
-%
-%    Here is an example of how you can typeset algorithms.
-%    There are many packages to do this in \LaTeX.
-%     
-%    \lstset{caption={Caption for code}}
-%    \lstset{label={lst:alg1}}
-%     \begin{lstlisting}[style = Python]
-%    from package import Class # Mesh required for..
-%    
-%    cinstance = Class.from_obj('class.obj')
-%    cinstance.go()
-%    \end{lstlisting}
-%     
-%  \item Problem 1 part 4 answer here.
-%
-%    Here is an example of how you can insert a figure.
-%    %\begin{figure}[!h]
-%    %\centering
-%    %\includegraphics[width=0.3\linewidth]{heidi.jpg}
-%    %\caption{Heidi attacked by a string.}
-%    %\end{figure}
-%\end{enumerate}
-
-
+\newpage
 \section*{Problem 2}
 % Rest of the work...
 
