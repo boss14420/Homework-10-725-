@@ -68,20 +68,20 @@ Answer to the problem goes here.
 \item Closed and convex sets.
 \begin{enumerate}[label=(\roman*)]
     \item
-        For any $Ax, Ay \in A(S)$ ($x, y \in S$) and any $\theta \in [0, 1]$, we have
+        For any $Ax, Ay \in A(S)$ ($x, y \in S$) and any $t \in [0, 1]$, we have
 
-        \[\theta Ax + (1 - \theta) Ay = A (\theta x + (1- \theta)y)\]
+        \[t Ax + (1 - t) Ay = A (t x + (1- t)y)\]
 
-        is a member of $A(S)$ because $\theta x + (1-\theta) y \in S$.
+        is a member of $A(S)$ because $t x + (1-t) y \in S$.
         Therefore $A(S)$ is convex.
 
     \item
         For any $x, y \in A^{-1}(S)$, we have $Ax, Ay \in S$.
 
-        Then $\theta Ax + (1-\theta)Ay = A(\theta x + (1-\theta)y) \in S,
-        \forall \theta \in [0, 1]$ because $S$ is convex.
+        Then $t Ax + (1-t)Ay = A(t x + (1-t)y) \in S,
+        \forall t \in [0, 1]$ because $S$ is convex.
 
-        By definition of $A^{-1}(S)$, $\theta x + (1-\theta)y \in A^{-1}(S)$. Therefore $A^{-1}(S)$ is convex.
+        By definition of $A^{-1}(S)$, $t x + (1-t)y \in A^{-1}(S)$. Therefore $A^{-1}(S)$ is convex.
 
     \item
         Let $x$ is a limit point of $A^{-1}(S)$, then $\forall{}\epsilon{}>0,
@@ -129,15 +129,15 @@ Answer to the problem goes here.
 \end{enumerate}
 
 %==================================
-\item Let $X, Y$ are elements of the set. For each $\theta \in [0, 1]$ we have
+\item Let $X, Y$ are elements of the set. For each $t \in [0, 1]$ we have
     \begin{itemize}
-        \item $\theta X + (1 - \theta)Y$ is symetric,
-        \item $\theta X + (1 - \theta) \succeq 0$,
-        \item $I - \theta X + (1 - \theta) = \theta(I - X) + (1-\theta)(I - Y) \succeq 0$,
-        \item $tr(\theta X + (1- \theta)Y) = \theta tr(X) + (1 - \theta)tr(Y) = k$
+        \item $t X + (1 - t)Y$ is symetric,
+        \item $t X + (1 - t) \succeq 0$,
+        \item $I - t X + (1 - t) = t(I - X) + (1-t)(I - Y) \succeq 0$,
+        \item $tr(t X + (1- t)Y) = t tr(X) + (1 - t)tr(Y) = k$
     \end{itemize}
 
-    so $\theta X + (1- \theta)Y$ is also an element. Therefore the set is convex.
+    so $t X + (1- t)Y$ is also an element. Therefore the set is convex.
 
 
 %==================================
@@ -174,8 +174,62 @@ Answer to the problem goes here.
     implies $A^Ty \ge 0$ (statement ii).
 \end{alphalist}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section*{Problem 2}
-% Rest of the work...
+
+\begin{alphalist}
+\item Let $\sigma^{*}$ is permutation which $x_{\sigma^{*}(1)} \le
+    x_{\sigma^{*}(2)} \le...\le x_{\sigma^{*}(n)}$ and $\sigma$ is another
+    permutation. Suppose $\sigma(i), \sigma(j)$ are indices of the smallest and
+    largest elements of $x$. Then
+    \[
+        \begin{split}
+            \sum_{i=1}^{n-1} |x_{\sigma^{*}(i)} - x_{\sigma^{*}(i+1)}|
+            &= x_{\sigma^{*}(n)} - x_{\sigma^{*}(1)} \\
+            &= x_{\sigma(j)} - x_{\sigma(i)} = |x_{\sigma(j)} - x_{\sigma(i)}| \\
+            &\le \sum_{k=i}^{j-1} | x_{\sigma(k+1)} - x_{\sigma(k)}|
+            \le \sum_{k=1}^{n-1} | x_{\sigma(k+1)} - x_{\sigma(k)}| \\
+        \end{split}
+    \]
+
+    So $\sigma^{*}$ is the permutation with minimum value. We can rewrite
+    funtion $f(x)$ as
+    \[
+        f(x) = max_{i,j} (x_j - x_i)
+    \]
+    $f(x)$ is pointwise maximization of function set $f_{i,j}(x) = x_i - x_j$
+    and $f_{i,j}$ is convex then $f(x)$ is convex.
+
+\item
+    \[
+        \begin{split}
+            f(x) &= -\sum_{i=1}^n log(x_i)\\
+            \nabla_{i}f(x) &= -\frac{1}{x_i}\\
+            \nabla_{ij}^2 f(x) &= \delta_{ij} \frac{1}{x_i^2}
+        \end{split}
+    \]
+
+    Hessian of $f(x)$ is a diagonal matrix with positive diagonal entries,
+    hence positive definite. Since $dom(f) = \mathbb{R}_{++}^n$ convex then $f(x)$ is strictly convex.
+
+\item
+    Function $f$ is convex if and only if its restriction to any line is
+    convex. In other words $f$ is convex if and only if for all $x \in dom
+    f$ and all $v$, the function $g(t) = f(x + tv), x + tv \in dom f$ is convex.
+
+    Notice that $g'(t) = v^T\nabla f(x + tv)$. Take two points $t_1 < t_2$ we have
+    \[
+        \begin{split}
+            g'(t_2) - g'(t_1) &= v^T(\nabla f(x + t_2v - \nabla f(x + t_1v))) \\
+                            &= \frac{1}{t_2-t_1} ((x + t_2v) - (x +
+                            t_1v))^T (\nabla f(x + t_2v) - \nabla f(x + t_1v))
+        \end{split}
+    \]
+
+    So $g'(t)$ is non decreasing (equivalent to $g$ is convex) if and only if $\nabla f$ is monotone.
+
+
+\end{alphalist}
 
 \end{document}
