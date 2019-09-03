@@ -58,7 +58,7 @@
 
 \begin{document}
 
-\section*{Problem 1}
+\section*{Convex sets}
 
 Answer to the problem goes here.
 
@@ -176,7 +176,7 @@ Answer to the problem goes here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\section*{Problem 2}
+\section*{2 Convex functions}
 
 \begin{alphalist}
 \item Let $\sigma^{*}$ is permutation which $x_{\sigma^{*}(1)} \le
@@ -229,6 +229,35 @@ Answer to the problem goes here.
 
     So $g'(t)$ is non decreasing (equivalent to $g$ is convex) if and only if $\nabla f$ is monotone.
 
+\item
+    Function $f(x) = \frac{1}{x}, x > 0$ is strictly convex and $inf f = 0$ but
+    $f$ does not attain its infimum.
+
+\item
+    Assume function $f$ is strongly convex with parameter $m > 0$ and  $g(x) =
+    f(x) - \frac{m}{2} ||x||_2^2$. Then $g(x)$ is convex, by first order
+    characterization
+    \[
+        \begin{split}
+            g(y) &\ge g(x) + \nabla g(x)^T(y - x) \\
+            f(y) - \frac{m}{2}||y||_2^2 &\ge g(x) + (\nabla f(x) - mx)^T(y -
+            x)\\
+            f(y) &\ge \frac{m}{2}||y||_2^2 + (\nabla f(x) - mx)^Ty + g(x) + (\nabla f(x) - mx)^Tx
+        \end{split}
+    \]
+
+    Let $K = g(x) + (\nabla f(x) - mx)^Tx, z = \nabla f(x) - mx$, then
+    \[
+        f(y) \ge \frac{m}{2}||y||_2^2 + z^Ty + K
+    \]
+
+    By Cauchy-Schwarz inequality $z^Ty \ge - ||z||_2||y||_2$, we have
+    \[
+        f(y) \ge \frac{m}{2}||y||_2^2 - ||z||_2 ||y||_2 + K
+    \]
+
+    Because $K$ and $z$ do not depend on $y$, $f(y) \to \infty$ as $||y||_2 \to
+    \infty$.
 
 \end{alphalist}
 
