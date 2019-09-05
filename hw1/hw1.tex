@@ -58,7 +58,7 @@
 
 \begin{document}
 
-\section*{Convex sets}
+\section*{1. Convex sets}
 
 Answer to the problem goes here.
 
@@ -260,5 +260,39 @@ Answer to the problem goes here.
     \infty$.
 
 \end{alphalist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{3 Lipschitz gradients and strong convexity}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{4 Solving optimization problems with CVX}
+
+\begin{alphalist}
+    \item
+    \item
+        \begin{enumerate}
+            \item $\frac{1}{x - y} = \frac{0 (x y)^T + 1}{(1 -1)(x y)^T}$ is
+                convex because $x - y > 0$.\\
+                $\frac{1}{(x + y)^2}$ is convex beacause ${x + y}$ is affine
+                and $f(t) = \frac{1}{t^2}$ is convex.
+
+                Rewrite: $inv\_pos(x - y) + square(inv\_pos(x+y)) \le z$
+
+            \item $square(x) + 2 * square(inv\_pos(log(y))) <= 5 * sqrt(sqrt(z))$
+            \item $square(x - y) + square(x) + 4 * square(y)$
+            \item $pow(square(x) + 4 * square(y) + 1, 1.5) <= 7 * x + y$
+            \item $log(x) + log(y) + log(2 * x - 1) >= log(8)$
+            \item $y <= -kl\_div(x, z) + z - x$
+            \item $quad\_over\_lin(z, y) <= 4 * x$
+            \item $quad\_over\_lin(square(x + y), sqrt(z)) <= 2 * x + y$
+            \item $norm(max(x, 2), y) <= z$
+            \item 
+
+
+        \end{enumerate}
+\end{alphalist}
+
 
 \end{document}
