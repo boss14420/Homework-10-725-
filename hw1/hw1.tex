@@ -264,6 +264,48 @@ Answer to the problem goes here.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section*{3 Lipschitz gradients and strong convexity}
+\begin{alphalist}
+%=== Lipschitz
+\item
+    \begin{itemize}
+        \item (i) => (ii): Let $a = \nabla{}f(x) - \nabla{}f(y), b = x - y$
+            \[
+                \begin{split}
+                    (i) \implies ||a||_2 &\le L ||b||_2 \qquad \text{for all } x, y\\
+                    ||a||_2 ||b||_2 &\le L ||b||_2^2 \qquad \text{for all } x, y\\
+                    ||a||_2 ||b||_2 \cos(a, b) &\le L ||b||_2^2 \qquad \text{for all } x, y\\
+                    a^Tb &\le L ||b||_2^2 \qquad \text{for all } x, y \qquad (ii)
+                \end{split}
+            \]
+
+        \item (ii) => (iii): Let $g(t) = f(x + v*t), t \in R, v \in dom(f)$.
+            So $\nabla{}g(t) = \nabla{}f(x + vt)^Tv, \nabla^2g(t) = v^T\nabla^2f(x + vt)v$.
+            From (ii) we have:
+            \[
+                \begin{split}
+                    (\nabla{}f(x + vt_2) - \nabla{}f(x + vt_1))^T(v\Delta{}t) &\le (\Delta{}t)^2 Lv^Tv \qquad \forall{}t_2 \ne t_1\\
+                    \frac{\nabla{}g(t_2) - \nabla{}g(t_1)}{\Delta{}t} &\le Lv^tv  \qquad \forall{}t_2 \ne t_1\\
+                    \nabla^2g(t) &\le Lv^tv \\
+                    v^T\nabla^2f(x)v &\le LIv^Tv \\
+                    \nabla^2f(x) &\preceq LI
+                \end{split}
+            \]
+
+        \item (iii) => (iv): (iii) => $g(x) = \frac{L}{2}x^Tx - f(x)$ convex.
+            By first order characterization:
+            \[
+                \begin{split}
+                    g(y) &\ge g(x) + \nabla{}g(x)^T(y - x) \\
+                    \frac{L}{2}y^Ty - f(y) &\ge \frac{L}{2}x^Tx - f(x) + (Lx - \nabla{}f(x))^T(y - x)\\
+                    f(y) &\le f(x) + \nabla{}f(x)^T(y - x) + \frac{L}{2}(x^Tx - 2x^Ty + y^Ty)\\
+                    f(y) &\le f(x) + \nabla{}f(x)^T(y - x) + \frac{L}{2}||y - x||_2^2
+                \end{split}
+            \]
+    \end{itemize}
+
+%=== Strong convexity
+\item
+\end{alphalist}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
