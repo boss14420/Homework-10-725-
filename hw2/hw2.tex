@@ -1,0 +1,134 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{10 - 725}
+\newcommand\hwnumber{2}                  % <-- homework number
+\newcommand\NetIDa{abc}           % <-- NetID of person #1
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa}                 % <-- Comment this line out for problem sets (make sure you are person #1)
+\chead{\textbf{\Large Homework \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+
+% if you want to create a new list from scratch
+\newlist{alphalist}{enumerate}{1}
+% in that case, at least label must be specified using \setlist
+\setlist[alphalist,1]{label=\textbf{\alph*.}}
+
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\begin{document}
+
+\section*{1. Subgradients and Proximal Operators}
+
+Answer to the problem goes here.
+
+\begin{alphalist}
+
+%==================================
+\item
+\begin{enumerate}[label=(\roman*)]
+    \item
+        Convex: $\forall u, v \in \partial{}f(x), t \in [0, 1]$. For all $y \in
+        dom f$:
+        \[
+            \begin{split}
+                & f(x) + (tu + (1-t)v)^T(y-x) \\
+                =\quad & f(x) + tu^T(y-x) + (1-t)v^T(y-x) \\
+                \le\quad & f(x) + max\{u^T(y-x), v^T(y-x)\} \\
+                \le\quad & f(y)
+            \end{split}
+        \]
+
+        Closed: $\partial{}f(x) = \{ g : g^T(y - x) \le f(y) - f(x) \}$ is a
+        polyhedron, hence closed set.
+
+    \item
+        Consider $g \in \partial{}f(x)$, then $f(y) \ge f(x) + g^T(y-x),
+        \forall x, y \in dom f$. With $f(y) \le f(x)$, $g^T(y - x) = g^T -
+        g^Tx$ must be negative.
+        Therefore $g \in N_{y: f(y) \le f(x)}$.
+
+    \item
+        If $||y||_q = 0$ then $y = 0$. The inequality hold.
+
+        If $||y||_q > 0$ then $\left|\left|\frac{y}{||y||_q}\right|\right|_q =
+        1$. By dual representation of the norm:
+        \[
+            ||x||_p ||y||_q  \ge x^T\frac{y}{||y||_q} ||y||_q = x^Ty
+        \]
+
+    \item
+        $S = \argmax_{||z||_q \le 1} z^Tx \subseteq \partial{}f(x)$: Let $g \in
+        S$, then $||g||_q \le 1$ and $g^Tx = ||x||_p$. For all $y \in dom f$
+        \[
+            f(x) + g^T(y-x) = ||x||_p + g^Ty - g^Tx = g^Ty \le ||y||_p = f(y)
+        \]
+
+        $\partial{}f(x) \subseteq S$: Let g is a subgradient of $f(x)$.
+
+        If $x = 0$, subgradient definition implies $||y||_p \ge g^Ty \quad \forall
+        y\in dom f$, then $||g||_q \le 1$.
+
+        If $x \ne 0$, $\partial{}f(x) = \{g\} = \{\nabla{}||x||_p\} = \left(
+        \frac{x_i^{p-1}}{||x||_p^{1/q}} \right)^T$. Then $||g||_q =
+        \left( \sum_i\frac{x_i^{(p-1)q}}{||x||_p} \right)^{1/q} = 1$.
+
+
+        So $||g||_q \le 1 \quad \forall x$.
+
+
+        Substitute $y = 0$ into subgradient definition: $\max_{||z||_q
+        \le 1} z^Tx = ||x||_p \le g^Tx \implies g \in \argmax_{||z||_q \le 1}
+        z^Tx$.
+
+\end{enumerate}
+\end{alphalist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+
+\end{document}
