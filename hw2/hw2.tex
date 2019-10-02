@@ -126,6 +126,69 @@ Answer to the problem goes here.
         z^Tx$.
 
 \end{enumerate}
+
+%==================================
+\item
+\begin{enumerate}[label=(\roman*)]
+    \item $h(x) = \frac{1}{2}z^TAz + b^Tz +c$
+        \begin{align*}
+            &\text{prox}_{h,t}(x) = \text{argmin}_z \frac{1}{2}||z-x||^2 + th(z) = \text{argmin}_z f(z)\\
+            \iff \quad &\nabla_z f(z) = 0 \\
+            \iff \quad &(z -x) + t(Az + b) = 0 &\qquad\qquad (\text{because A symetric}) \\
+            \iff \quad &z = (I + tA)^{-1} (x + tb) &\qquad\qquad (I + tA \succ 0)\\
+        \end{align*}
+
+    \item $h(x) = \sum_{i=1}^nz_i\log{}z_i$
+        \begin{align*}
+            &\text{prox}_{h,t}(x) = \text{argmin}_z \frac{1}{2}||z-x||^2 + th(z) = \text{argmin}_z f(z)\\
+            \iff \quad &\nabla_z f(z) = 0 \\
+            \iff \quad &(z -x) + t(1 + \log{}z) = 0 \\
+            \iff \quad &(z_i -x_i) + t(1 + \log{}z_i) = 0 \quad &\forall i \in [1, n]\\
+            \iff \quad &x_i - t = z_i + t \log{}z_i \quad &\forall i \in [1, n]\\
+            \iff \quad &\frac{x_i}{t} - 1 = \frac{z_i}{t} + \log{}z_i \quad &\forall i \in [1, n]\\
+            \iff \quad &e^{\frac{x_i}{t} - 1} = z_i e^{\frac{z_i}{t}} \quad &\forall i \in [1, n]\\
+            \iff \quad &\frac{z_i}{t} = W\left(\frac{e^{\frac{x_i}{t} - 1}}{t}\right) \quad &\forall i \in [1, n]\\
+            \iff \quad &z_i = tW\left(\frac{e^{\frac{x_i}{t} - 1}}{t}\right) \quad &\forall i \in [2, n]
+        \end{align*}
+
+    \item $h(z) = ||z||_2$
+        \begin{align*}
+            &\text{prox}_{h,t}(x) = \text{argmin}_z \frac{1}{2}||z-x||^2 + th(z) = \text{argmin}_z f(z)\\
+            \iff \quad &0 \in \partial{}f(z) \\
+            \iff \quad &x - z \in t\partial{}h(z) \\
+        \end{align*}
+
+        If $z \ne 0$ then $\partial{}h(z) = \frac{z}{||z||_2}$. The optimality
+        condition is
+        \begin{align*}
+            &z - x + t\frac{z}{||z||_2} = 0 \\
+            \iff \quad &z = x - t\frac{z}{||z||_2} \\
+            \iff \quad &z = x - t\frac{x}{||x||_2} \quad \text{(z parallel with x)}\\
+            \iff \quad &z = x \left(1 - \frac{t}{||x||_2} \right) \\
+        \end{align*}
+
+        Note that $x = z + t\frac{z}{||z||_2}$, then $||x||_2 = ||z||_2 +
+        \left|\left|\frac{tz}{||z||_2}\right|\right|_2 > t$ (because $z$ parallel
+        with $\frac{z}{||z||_2}$)
+
+        In the case where $z = 0$, the subdifferential $\partial h(z) = \{ g :
+        ||g||_2 \lte 1 \}$. The optimality condition is
+        \begin{align*}
+            &x \in \{ tg : ||g||_2 \lte 1 \} \\
+            &||x||_2 \lte t
+        \end{align*}
+
+        Putting all together
+        \[
+            \text{prox}_{h,t} (x) = z = \begin{cases}
+                0 \qquad & \text{if } ||x||_2 \lte t
+                x\left(1 - \frac{t}{||x||_2}\right) \qquad & \text{if } ||x||_2 > t
+            \end{cases}
+        \]
+
+    \item $h(z) = ||z||_0$
+\end{enumerate}
+
 \end{alphalist}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
